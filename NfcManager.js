@@ -27,12 +27,6 @@ class NfcManager {
     return new Promise((resolve, reject) => {
       NativeNfcManager.start(resolve);
     })
-      .then(() => {
-        if (Platform.OS === 'ios') {
-          this._clientSessionClosedListener = onSessionClosedIOS;
-          NfcManagerEmitter.addListener(Events.SessionClosed, this._handleSessionClosed)
-        }
-      })
   }
 
   isEnabled() {
